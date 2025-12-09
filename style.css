@@ -1,0 +1,84 @@
+:root{
+  --bg: #ffd6e7;
+  --accent: #ff5e8e;
+  --card: #fff5f9;
+  --text: #4a274a;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,'Poppins',sans-serif;background:var(--bg);color:var(--text)}
+.container{max-width:980px;margin:18px auto;padding:0 18px}
+.site-header{display:flex;gap:12px;align-items:center;padding:10px 0}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ffd166);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+.card{background:var(--card);border-radius:14px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,0.08);margin-bottom:16px}
+.typewriter{min-height:60px;font-size:18px}
+.controls{display:flex;gap:10px;align-items:center}
+.btn{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600}
+.btn.secondary{background:transparent;color:var(--accent);border:1px solid rgba(255,95,135,0.12)}
+.lead{color:#7a496b;margin:0}
+.hidden{display:none}
+
+/* play overlay */
+.play-overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0.45),rgba(0,0,0,0.6));color:#fff;z-index:9999}
+.play-overlay p{font-size:18px;margin-bottom:8px}
+.play-overlay .play{padding:12px 20px;border-radius:12px}
+
+/* slideshow */
+.slideshow-wrap,.slideshow-container{display:flex;justify-content:center}
+.slideshow{width:320px;height:320px;border-radius:14px;overflow:hidden;position:relative;border:4px solid rgba(255,153,200,0.28)}
+.slideshow img, .slideshow-container img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
+.slide.active{opacity:1}
+.slideshow-container {
+    z-index: 1; /* dari awalnya mungkin 10 atau 999 */
+}
+
+
+/* poem */
+.poem-text{min-height:240px;white-space:pre-wrap;background:rgba(255,255,255,0.9);padding:16px;border-radius:12px;margin-top:14px;color:#5a2140;font-size:18px;line-height:1.6}
+.poem-box {
+    background: rgba(255, 190, 210, 0.45);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(6px);
+}
+.poem-section {
+    position: relative;
+    z-index: 5;
+}
+
+/* flower */
+.flower-root{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:40}
+.flower{position:absolute;will-change:transform;pointer-events:none;font-size:20px;opacity:0.95;transform:translateY(-10vh)}
+.falling-flower {
+    z-index: 2;
+}
+
+
+/* love popup */
+#lovePopup{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--accent);color:white;padding:18px;border-radius:14px;display:none;z-index:10000}
+
+/* form */
+input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);margin-top:8px}
+
+/* responsive */
+@media(max-width:900px){
+  .slideshow{width:260px;height:260px}
+}
+@media(max-width:600px){
+  .slideshow{width:200px;height:200px}
+  .poem-text{font-size:16px}
+}
+/* 🔥 FORCE SLIDESHOW TO GO BEHIND POEM */
+.slideshow,
+.slideshow img,
+.slide {
+    z-index: 1 !important;
+}
+
+/* 🔥 MAKE POEM ALWAYS ON TOP */
+.poem-section,
+.poem-text,
+.poem-box {
+    position: relative;
+    z-index: 50 !important;
+    pointer-events: auto;
+}
